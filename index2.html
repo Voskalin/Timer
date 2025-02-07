@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advancedtimer</title>
+    <style>
+      body {
+        font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
+        text-align: center;
+        margin: 0px; 
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        justify-content: center;  /* Horizontal center */
+      align-items: center;      /* Vertical center */
+      }
+      #timer {
+        font-size: 6rem;
+        margin: 20px;
+      }
+      button {
+        background-color: rgb(255, 0, 0);
+      }
+      h1 {
+        font-size: xx-large;
+      }
+      div {
+        font-size: xx-large;
+      }
+    </style>
+    </head>
+
+<body>
+    <h1>Stopwatch</h1>
+    <div id="timer">00:00:00</div>
+    <button class="start" onclick="startStopwatch()">Start</button>
+    <button class="stop" onclick="pauseStopwatch()">Pause</button>
+    <button class="reset" onclick="resetStopwatch()">Reset</button>
+
+<hr>
+
+<button onclick="history.back()">Back to Timer</button>
+
+
+    <script>
+        let stopwatchInterval;
+        let elapsedTime = 0;
+        let running = false;
+
+        function updateStopwatchDisplay() {
+            let hours = Math.floor(elapsedTime / 3600);
+            let minutes = Math.floor((elapsedTime % 3600) / 60);
+            let seconds = elapsedTime % 60;
+
+            document.getElementById("timer").textContent =
+                String(hours).padStart(2, "0") + ":" +
+                String(minutes).padStart(2, "0") + ":" +
+                String(seconds).padStart(2, "0");
+        }
+
+        function startStopwatch() {
+            if (!running) {
+                running = true;
+                stopwatchInterval = setInterval(() => {
+                    elapsedTime++;
+                    updateStopwatchDisplay();
+                }, 1000);
+            }
+        }
+
+        function pauseStopwatch() {
+            running = false;
+            clearInterval(stopwatchInterval);
+        }
+
+        function resetStopwatch() {
+            running = false;
+            clearInterval(stopwatchInterval);
+            elapsedTime = 0;
+            updateStopwatchDisplay();
+        }
+    </script>
+
+</body>
+</html>

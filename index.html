@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TimerPreview</title>
+    <title>Advancedtimer</title>
     <style>
       body {
         font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
         text-align: center;
-        margin: 0px;
+        margin: 0px; 
         background: linear-gradient(135deg, #ff9a9e, #fad0c4);
         justify-content: center;  /* Horizontal center */
       align-items: center;      /* Vertical center */
       }
       #timer {
         font-size: medium;
-        margin: 20px;
+        margin: 6rem;
       }
       button {
         background-color: rgb(255, 0, 0);
@@ -23,6 +23,7 @@
       h1 {
         font-size: xx-large;
       }
+      
     </style>
     </head>
     <body>
@@ -86,7 +87,7 @@ function setCustomTime() {
 
 <hr>
 
-<h1>Egg Timer</h1>
+<h1>More Timer</h1>
 
 <button onclick="setThreeMinutes()">Soft Boiled egg</button>
 
@@ -109,21 +110,6 @@ function setCustomTime() {
         }
     }
 </script>
-
-<button onclick="setSevenHalfMinutes()">My Recommendation</button>
-
-<script>
-    function setSevenHalfMinutes() {
-        if (!running) {
-            seconds = 450; // 7.5 menit
-            updateTimerDisplay();
-        }
-    }
-</script>
-
-<hr>
-
-<h1>Advanced Features</h1>
 
 <button onclick="setTwoHours()">Limited Screentime (2 Hours)</button>
 
@@ -182,6 +168,33 @@ function resetCountdown() {
 </script>
 }
 
+<hr>
+
+<h1>Additional features</h1>
+
+<button onclick="redirectToIndex2()">Stopwatch</button>
+
+<script>
+function redirectToIndex2() {
+    window.location.href = "index2.html";
+}
+</script>
+
+<button onclick="redirectToIndex3()">World Clock</button>
+
+<script>
+    function redirectToIndex3() {
+        window.location.href = "index3.html";
+    }
+    </script>
+
+<button onclick="redirectToIndex4()">Group generator</button>
+
+<script>
+    function redirectToIndex4() {
+        window.location.href = "index4.html";
+    }
+    </script>
 
         <script>
             let countdown;
@@ -237,7 +250,7 @@ function resetCountdown() {
                 const countdownDisplay = document.getElementById("countdown");
                 countdownDisplay.textContent = time + " detik";
     
-                // Cute Jesslyn
+                // Cute Jesslyn Elena
                 if (timerInterval) {
                     clearInterval(timerInterval);
                 }
@@ -251,7 +264,10 @@ function resetCountdown() {
                         countdownDisplay.textContent = "timer_done_execute";
                         playAlertSound();
                     }
-                }, 1000);
+                }, 1000); //Thank You Valencio, untung Tuhan pertemukan kita,
+                //Kalau andai saja aku tetap di 9.3. Aku tak akan seperti sekarang.
+                //Have fun ya di IPEKA, i hope we can meet again someday :)
+                //Sekarang aku tahu kenapa Tuhan memindahkan saya ke 9.1 akwowk
             }
     
             function playAlertSound() {
@@ -260,4 +276,5 @@ function resetCountdown() {
             }
     </body>
     </html>
+
     

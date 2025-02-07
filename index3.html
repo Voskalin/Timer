@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Clock</title>
+    <style>
+        body {
+        font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
+        text-align: center;
+        margin: 0px; 
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        justify-content: center;  /* Horizontal center */
+      align-items: center;      /* Vertical center */
+      }
+      button {
+        background-color: rgb(255, 0, 0);
+      }
+         h1 {
+            font-size: 2rem;
+        }
+        .clock-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .clock {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 1.5rem;
+            min-width: 200px;
+        }
+        .city {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+    </head>
+
+    <h1>🌍 Jam Dunia</h1>
+    <div class="clock-container">
+        <div class="clock">
+            <div class="city">Jakarta (WIB)</div>
+            <div id="jakarta"></div>
+        </div>
+        <div class="clock">
+            <div class="city">Tokyo (JST)</div>
+            <div id="tokyo"></div>
+        </div>
+        <div class="clock">
+            <div class="city">New York (EST)</div>
+            <div id="newyork"></div>
+        </div>
+        <div class="clock">
+            <div class="city">London (GMT)</div>
+            <div id="london"></div>
+        </div>
+        <div class="clock">
+            <div class="city">Dubai (GST)</div>
+            <div id="dubai"></div>
+        </div>
+        <div class="clock">
+            <div class="city">Irkutsk (IRKT)</div>
+            <div id="irkutsk"></div>
+        </div>
+    </div>
+
+    <hr>
+
+<button onclick="history.back()">Back to Timer</button>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            
+            // Tzones
+            const times = {
+                "jakarta": now.toLocaleTimeString("id-ID", {timeZone: "Asia/Jakarta"}),
+                "tokyo": now.toLocaleTimeString("ja-JP", {timeZone: "Asia/Tokyo"}),
+                "newyork": now.toLocaleTimeString("en-US", {timeZone: "America/New_York"}),
+                "london": now.toLocaleTimeString("en-GB", {timeZone: "Europe/London"}),
+                "dubai": now.toLocaleTimeString("ar-AE", {timeZone: "Asia/Dubai"}),
+                "irkutsk": now.toLocaleTimeString("ru-RU", {timeZone: "Asia/Irkutsk"}) // Tambahan waktu Irkutsk
+            };
+
+            // TimeUpdate
+            for (const city in times) {
+                document.getElementById(city).textContent = times[city];
+            }
+        }
+
+        // Updatde every seccondss
+        setInterval(updateTime, 1000);
+        updateTime(); // Run once after page successfully loaded
+    </script>
+
+</body>
+</html>
