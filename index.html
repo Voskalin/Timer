@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TimerPreview</title>
+    <style>
+      body {
+        font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
+        text-align: center;
+        margin: 0px;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        justify-content: center;  /* Horizontal center */
+      align-items: center;      /* Vertical center */
+      }
+      #timer {
+        font-size: medium;
+        margin: 20px;
+      }
+      button {
+        background-color: rgb(255, 0, 0);
+      }
+      h1 {
+        font-size: xx-large;
+      }
+    </style>
+    </head>
+    <body>
+        <h1>Timer</h1>
+        <div id="timer">00:05:00</div>
+        <button onclick="startCountdown()">Start</button>
+        <button onclick="pauseCountdown()">Pause</button>
+        <button onclick="resetCountdown()">Reset</button>
+
+        <hr>
+
+        <button onclick="setTwoMinutes()">Set 2 Minutes</button>
+
+<script>
+    function setTwoMinutes() {
+        if (!running) {
+            seconds = 120; // 2 menit
+            updateTimerDisplay();
+        }
+    }
+</script>
+
+        <button onclick="setTenMinutes()">Set 10 Minutes</button>
+
+<script>
+    function setTenMinutes() {
+        if (!running) {
+            seconds = 600; // 10 menit
+            updateTimerDisplay();
+        }
+    }
+</script>
+
+<hr>
+
+<input type="number" id="customHours" placeholder="Hour" min="0">
+<input type="number" id="customMinutes" placeholder="Min" min="0">
+<input type="number" id="customSeconds" placeholder="sec" min="0">
+<button onclick="setCustomTime()">Set Custom</button>\
+
+<script>
+function setCustomTime() {
+  if (!running) {
+      let inputHours = document.getElementById("customHours").value;
+      let inputMinutes = document.getElementById("customMinutes").value;
+      let inputSeconds = document.getElementById("customSeconds").value;
+
+      let newSeconds = (parseInt(inputHours) || 0) * 3600 + 
+                       (parseInt(inputMinutes) || 0) * 60 + 
+                       (parseInt(inputSeconds) || 0);
+
+      if (newSeconds > 0) {
+          seconds = newSeconds;
+          updateTimerDisplay();
+      } else {
+          alert("PLEASE ENTER THE RIGHT VARIABLE");
+      }
+  }
+}
+</script>
+
+<hr>
+
+<h1>Egg Timer</h1>
+
+<button onclick="setThreeMinutes()">Soft Boiled egg</button>
+
+<script>
+    function setThreeMinutes() {
+        if (!running) {
+            seconds = 180; // 3 menit
+            updateTimerDisplay();
+        }
+    }
+</script>
+
+<button onclick="setFifthTeenMinutes()">Extreme Hard Boiled Egg</button>
+
+<script>
+    function setFifthTeenMinutes() {
+        if (!running) {
+            seconds = 900; // 15 menit
+            updateTimerDisplay();
+        }
+    }
+</script>
+
+<button onclick="setSevenHalfMinutes()">My Recommendation</button>
+
+<script>
+    function setSevenHalfMinutes() {
+        if (!running) {
+            seconds = 450; // 7.5 menit
+            updateTimerDisplay();
+        }
+    }
+</script>
+
+<hr>
+
+<h1>Advanced Features</h1>
+
+<button onclick="setTwoHours()">Limited Screentime (2 Hours)</button>
+
+<script>
+    let shutdownTimeout;
+
+function setTwoHours() {
+    if (!running) {
+        seconds = 7200; // 2 jam (2 * 3600 detik)
+        updateTimerDisplay();
+    }
+}
+
+function handleTimeEnd() {
+    clearTimeout(shutdownTimeout); // NoBeforeTimeout
+
+    shutdownTimeout = setTimeout(() => {
+        alert("System Will Shutting Donw Now!");
+        shutdownSystem();
+    }, 30000); // wait 30 sec before execute
+}
+
+function shutdownSystem() {
+    // if this only support node.js or ur ass browser suppoorts it
+    // window.close(); // if only closing browseer
+    console.log("Sysyem is Shutting Down!"); // ShutExcecute
+}
+
+// Mod part that controls execute
+function startCountdown() {
+    if (!running && seconds > 0) {
+        running = true;
+        countdown = setInterval(() => {
+            if (seconds > 0) {
+                seconds--;
+                updateTimerDisplay();
+            } else {
+                clearInterval(countdown);
+                running = false;
+                alert("Waktu habis!");
+                handleTimeEnd();
+            }
+        }, 1000);
+    }
+}
+
+// AddFunction to abort
+function resetCountdown() {
+    running = false;
+    clearInterval(countdown);
+    clearTimeout(shutdownTimeout); // if reset clicked then abort
+    seconds = 0;
+    updateTimerDisplay();
+}
+
+</script>
+}
+
+
+        <script>
+            let countdown;
+            let seconds = 300; // 5 menit
+            let running = false;
+    
+            function updateTimerDisplay() {
+                let hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+                let mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+                let secs = String(seconds % 60).padStart(2, '0');
+                document.getElementById("timer").textContent = `${hrs}:${mins}:${secs}`;
+            }
+    
+            function startCountdown() {
+                if (!running && seconds > 0) {
+                    running = true;
+                    countdown = setInterval(() => {
+                        if (seconds > 0) {
+                            seconds--;
+                            updateTimerDisplay();
+                        } else {
+                            clearInterval(countdown);
+                            running = false;
+                            alert("Waktu habis!");
+                        }
+                    }, 1000);
+                }
+            }
+    
+            function pauseCountdown() {
+                running = false;
+                clearInterval(countdown);
+            }
+    
+            function resetCountdown() {
+                running = false;
+                clearInterval(countdown);
+                seconds = 300; // Reset ke 5 menit
+                updateTimerDisplay();
+            }
+    
+            updateTimerDisplay();
+        </script>
+        <p id="countdown"></p>
+
+        <audio id="alert-sound" source src="metal.mp3" type:"audio/mp3" preload="auto"></audio>
+    
+        <script>
+            let timerInterval;
+    
+            function startTimer() {
+                let time = parseInt(document.getElementByI2d("timer").value);
+                const countdownDisplay = document.getElementById("countdown");
+                countdownDisplay.textContent = time + " detik";
+    
+                // Cute Jesslyn
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                }
+    
+                timerInterval = setInterval(function() {
+                    time--;
+                    countdownDisplay.textContent = time + " detik";
+    
+                    if (time <= 0) {
+                        clearInterval(timerInterval);
+                        countdownDisplay.textContent = "timer_done_execute";
+                        playAlertSound();
+                    }
+                }, 1000);
+            }
+    
+            function playAlertSound() {
+                const audio = document.getElementById("alert-sound");
+                audio.play();
+            }
+    </body>
+    </html>
+    
