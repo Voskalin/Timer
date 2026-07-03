@@ -6,10 +6,12 @@
     <title>Random Picker</title>
     <style>
         body {
-            font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            text-align: center;
-            padding: 20px;
+              font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
+        text-align: center;
+        margin: 0px; 
+        background: linear-gradient(135deg, #262838, #2b3a3d);
+        justify-content: center;  /* Horizontal center */
+      align-items: center;      /* Vertical center */
         }
         .container {
         max-width: 600px;
@@ -65,7 +67,7 @@
             let randomIndex = Math.floor(Math.random() * names.length);
             let selectedName = names[randomIndex];
 
-            output.innerHTML = `🎉 Nama yang terpilih: <strong>${selectedName}</strong>`;
+            output.innerHTML = `🎉 Selected Name: <strong>${selectedName}</strong>`;
         }
     </script>
 
