@@ -4,17 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Clock</title>
-    <style>
-        body {
+     <style>
+      body {
         font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
         text-align: center;
         margin: 0px; 
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        background: linear-gradient(135deg, #262838, #2b3a3d);
         justify-content: center;  /* Horizontal center */
       align-items: center;      /* Vertical center */
       }
+      #timer {
+        font-size: 5rem;
+        margin: 20px;
+        font-style: o;
+        font-weight: bold;
+        color:yellow;
+      }
       button {
-        background-color: rgb(255, 0, 0);
+            background-color: rgb(238, 255, 0);
+            border: 2px solid #bab517;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
       }
          h1 {
             font-size: 2rem;
@@ -27,7 +40,7 @@
             margin-top: 20px;
         }
         .clock {
-            background: white;
+            color: rgb(218, 247, 0);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -37,6 +50,20 @@
         .city {
             font-weight: bold;
             margin-bottom: 5px;
+            color: yellow;
+        }
+        button:hover {
+    background-color: #12577a;
+    color: white;
+    transform: scale(1.07);
+    transition: all 0.2s ease;
+}
+hr {
+        color: transparent;
+        border-color: transparent;
+      }
+        h1 {
+            color: yellow;
         }
     </style>
     </head>

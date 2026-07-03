@@ -9,26 +9,63 @@
         font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
         text-align: center;
         margin: 0px; 
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        background: linear-gradient(135deg, #262838, #2b3a3d);
         justify-content: center;  /* Horizontal center */
       align-items: center;      /* Vertical center */
       }
       #timer {
         font-size: 5rem;
         margin: 20px;
+        font-style: o;
+        font-weight: bold;
+        color:yellow;
       }
       button {
-        background-color: rgb(255, 0, 0);
+            background-color: rgb(238, 255, 0);
+            border: 2px solid #bab517;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
       }
+       input {
+            padding: 12px 16px;
+    width: 180px;
+    font-size: 20px;
+    border: 2px solid #a1ab1c;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+         button:hover {
+    background-color: #12577a;
+    color: white;
+    transform: scale(1.07);
+    transition: all 0.2s ease;
+}
       h1 {
         font-size: xx-large;
+        color: aliceblue;
+      }
+      .timer {
+        font-weight: bold;
+        color: aliceblue;
+      }
+      p {
+        color: aliceblue;
+      }
+      hr {
+        color: transparent;
+        border-color: transparent;
       }
       
     </style>
     </head>
     <body>
         <h1>Timer</h1>
-        <p>Made by Voskalin, Early Access.</p>
+        <p>Made by Voskalin</p>
         <div id="timer">00:05:00</div>
         <button onclick="startCountdown()">Start</button>
         <button onclick="pauseCountdown()">Pause</button>
@@ -36,12 +73,12 @@
 
         <hr>
 
-        <button onclick="setTwoMinutes()">Set 2 Minutes</button>
+        <button onclick="setTwoMinutes()">Set 5 Minutes</button>
 
 <script>
     function setTwoMinutes() {
         if (!running) {
-            seconds = 120; // 2 menit
+            seconds = 300; // 2 menit
             updateTimerDisplay();
         }
     }
@@ -88,90 +125,7 @@ function setCustomTime() {
 
 <hr>
 
-<h1>More Timer</h1>
-
-<button onclick="setThreeMinutes()">Soft Boiled egg</button>
-
-<script>
-    function setThreeMinutes() {
-        if (!running) {
-            seconds = 180; // 3 menit
-            updateTimerDisplay();
-        }
-    }
-</script>
-
-<button onclick="setFifthTeenMinutes()">Extreme Hard Boiled Egg</button>
-
-<script>
-    function setFifthTeenMinutes() {
-        if (!running) {
-            seconds = 900; // 15 menit
-            updateTimerDisplay();
-        }
-    }
-</script>
-
-<button onclick="setTwoHours()">Limited Screentime (2 Hours)</button>
-
-<script>
-    let shutdownTimeout;
-
-function setTwoHours() {
-    if (!running) {
-        seconds = 7200; // 2 jam (2 * 3600 detik)
-        updateTimerDisplay();
-    }
-}
-
-function handleTimeEnd() {
-    clearTimeout(shutdownTimeout); // NoBeforeTimeout
-
-    shutdownTimeout = setTimeout(() => {
-        alert("System Will Shutting Donw Now!");
-        shutdownSystem();
-    }, 30000); // wait 30 sec before execute
-}
-
-function shutdownSystem() {
-    // if this only support node.js or ur ass browser suppoorts it
-    // window.close(); // if only closing browseer
-    console.log("Sysyem is Shutting Down!"); // ShutExcecute
-}
-
-// Mod part that controls execute
-function startCountdown() {
-    if (!running && seconds > 0) {
-        running = true;
-        countdown = setInterval(() => {
-            if (seconds > 0) {
-                seconds--;
-                updateTimerDisplay();
-            } else {
-                clearInterval(countdown);
-                running = false;
-                alert("Waktu habis!");
-                handleTimeEnd();
-            }
-        }, 1000);
-    }
-}
-
-// AddFunction to abort
-function resetCountdown() {
-    running = false;
-    clearInterval(countdown);
-    clearTimeout(shutdownTimeout); // if reset clicked then abort
-    seconds = 0;
-    updateTimerDisplay();
-}
-
-</script>
-}
-
-<hr>
-
-<h1>Additional features</h1>
+<h1>You Might Also Like :</h1>
 
 <button onclick="redirectToIndex2()">Stopwatch</button>
 
@@ -202,6 +156,7 @@ function redirectToIndex2() {
 <script>
     function redirectToIndex5() {
         window.location.href = "index5.html";
+
     }
     </script>
 
@@ -241,7 +196,7 @@ function redirectToIndex2() {
             function resetCountdown() {
                 running = false;
                 clearInterval(countdown);
-                seconds = 300; // Reset ke 5 menit
+                seconds = 300; // E2-6110 bangsat
                 updateTimerDisplay();
             }
     
@@ -273,10 +228,7 @@ function redirectToIndex2() {
                         countdownDisplay.textContent = "timer_done_execute";
                         playAlertSound();
                     }
-                }, 1000); //Thank You Valencio, untung Tuhan pertemukan kita,
-                //Kalau andai saja aku tetap di 9.3. Aku tak akan seperti sekarang.
-                //Have fun ya di IPEKA, i hope we can meet again someday :)
-                //Sekarang aku tahu kenapa Tuhan memindahkan saya ke 9.1 akwowk
+                }, 1000); //niggers
             }
     
             function playAlertSound() {
